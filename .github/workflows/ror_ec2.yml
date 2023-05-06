@@ -71,7 +71,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:${{ steps.date.outputs.date }}
 
       - name: Setup the SSH
-        run:
+        run: |
           mkdir -p ~/.ssh/
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/github-actions-key
           chmod 600 ~/.ssh/github-actions-key
