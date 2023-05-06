@@ -13,9 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     # normally if you have a server based db engine you put that under `services:` in this portion
 
-    env:
-      # development test or production are your potential options for RAILS_ENV:
-      RAILS_ENV: test
     steps:
 
       - name: Checkout code
@@ -33,11 +30,7 @@ jobs:
 
       # Add or replace db setup steps below
       - name: Setup database schema
-        run: bin/rails db:schema:load # TODO this command might need to be changed
-
-      # Add or replace test runners here
-      - name: Run Tests
-        run: bin/rake
+        run: rails db:migrate RAILS_ENV=test 
 
       - name: Upload Code Coverage
         uses: actions/upload-artifact@v2
