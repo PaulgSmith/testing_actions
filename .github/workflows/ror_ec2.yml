@@ -83,7 +83,7 @@ jobs:
             StrictHostKeyChecking no
           END
       - name: List the Home Dir
-        run: ssh ec2 'docker pull ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest && docker stop ruby-app && docker rm ruby-app && docker run -d -p 3000:3000 --name ruby-app ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest
+        run: ssh ec2 'docker pull ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest && docker stop ruby-app && docker rm ruby-app && docker run -d -p 3000:3000 --name ruby-app ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest'
 
 
 
