@@ -34,3 +34,4 @@ jobs:
 
       - name: Deploy static site to S3 bucket
         run: aws s3 sync ./build/ ${{secrets.AWS_S3_PROJECT_NAME }} --delete
+        working-directory: frontend-react
