@@ -27,6 +27,9 @@ jobs:
         with:
           ruby-version: '3.2.2'
           bundler-cache: true
+          
+      - name: Install dependencies
+        run: bundle install
 
       # Add or replace db setup steps below
       - name: Setup database schema
