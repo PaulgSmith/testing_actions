@@ -78,7 +78,7 @@ jobs:
           cat >>~/.ssh/config <<END
           Host ec2
             HostName ${{ secrets.EC2_RAILS_URL }}
-            User "ubuntu"
+            User ubuntu
             IdentityFile ~/.ssh/github-actions-key
             StrictHostKeyChecking no
           END
