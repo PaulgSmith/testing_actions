@@ -14,17 +14,17 @@ jobs:
       - name: Checking out code
         uses: actions/checkout@v3
         with:
-          path: ./frontend-react/*
+          path: ROR-Revature-Capstone/frontend-react/*
       - name: Installing Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18.16.0"
       - name: Installing dependencies
         run: npm ci
-        working-directory: ./frontend-react/
+        working-directory: ROR-Revature-Capstone/frontend-react/
       - name: Building project
         run: npm run build
-        working-directory: ./frontend-react/
+        working-directory: ROR-Revature-Capstone/frontend-react/
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
