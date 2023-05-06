@@ -65,7 +65,7 @@ jobs:
         with:
           # these images are in dockerhub and we are trying to remote add the files into the EC2 instance
           context: .
-          file: ./Dockerfile
+          file: DockerfileRailsLive
           push: true
           # by the way, steps.<step_id>.outputs.<output_name> utilizes the id: date you declared earlier within 'Get Current Date'
           tags: |
