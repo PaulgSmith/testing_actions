@@ -17,12 +17,13 @@ jobs:
       # development test or production are your potential options for RAILS_ENV:
       RAILS_ENV: test
     steps:
-      - name: Install SQLite3
-        run: sudo apt-get update && sudo apt-get install -y sqlite3
 
       - name: Checkout code
         uses: actions/checkout@v3
-
+        
+      - name: Install SQLite3
+        run: sudo apt-get update && sudo apt-get install -y sqlite3
+        
       # Add or replace dependencies in this section
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
