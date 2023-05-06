@@ -1,5 +1,5 @@
 #1 This is the official Ruby image (https://hub.docker.com/_/ruby) - a complete Linux system with Ruby installed
-FROM ruby:3.2.2-1
+FROM ruby:3.2.2
 
 #2 Install applications needed for building Rails app
 RUN apt-get update && apt-get install -y \
