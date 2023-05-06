@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 #4 Copy files from current location to image WORKDIR
-COPY . . 
+COPY backend-ROR/ . 
 
 #5 Install gems in the image
 RUN bundle install
