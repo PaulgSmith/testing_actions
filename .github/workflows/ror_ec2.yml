@@ -75,15 +75,6 @@ jobs:
           mkdir -p ~/.ssh/
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/github-actions-key
           chmod 600 ~/.ssh/github-actions-key
-          cat >>~/.ssh/config <<END
-          Host ec2 
-            HostName ec2-35-164-19-99.us-west-2.compute.amazonaws.com
-            User ubuntu
-            IdentityFile ~/.ssh/github-actions-key
-            StrictHostKeyChecking no
-          END
-      - name: List the Home Dir
-        run: ssh ec2 'docker pull ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest && docker stop ruby-app && docker rm ruby-app && docker run -d -p 3000:3000 --name ruby-app ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest'
-#            HostName ${{ secrets.EC2_RAILS_URL }}
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/github-actions-key ubuntu@${{ secrets.EC2_RAILS_URL }} 'if docker inspect ruby-app >/dev/null 2>&1; then docker stop ruby-app && docker rm ruby-app; fi && docker pull ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest && docker run -d -p 3000:3000 --name ruby-app ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest'
 
 
