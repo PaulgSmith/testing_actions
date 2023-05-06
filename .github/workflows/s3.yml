@@ -22,6 +22,8 @@ jobs:
         working-directory: frontend-react
       - name: Building project
         run: npm run build
+        env:
+          CI: false
         working-directory: frontend-react
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
