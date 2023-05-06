@@ -18,7 +18,8 @@ jobs:
         with:
           node-version: "18.16.0"
       - name: Installing dependencies
-        run: npm ci
+        #run: npm ci
+        run: npm instal
       - name: Building project
         run: npm run build
       - name: Configure AWS Credentials
