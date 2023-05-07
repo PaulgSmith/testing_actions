@@ -73,8 +73,9 @@ jobs:
       - name: Setup the SSH
         env:
           PRIVATE_KEY: ${{ secrets.SSH_RUBY_EC2 }}
+        # "if sudo docker inspect ruby-app >/dev/null 2>&1; then sudo docker stop ruby-app && sudo docker rm ruby-app; fi && sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest && sudo docker run -d -p 3000:3000 --name ruby-app ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest"
         run: |
           mkdir -p ~/.ssh
           echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_RAILS_URL }} "if sudo docker inspect ruby-app >/dev/null 2>&1; then sudo docker stop ruby-app && sudo docker rm ruby-app; fi && sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest && sudo docker run -d -p 3000:3000 --name ruby-app ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_RAILS_URL }} sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest && sudo docker run -d -p 3000:3000 --name ruby-app ${{ secrets.DOCKERHUB_USERNAME }}/rails-live:latest
