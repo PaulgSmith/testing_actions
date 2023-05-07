@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm ci
+RUN npm ci --no-warnings
 
 RUN npm run build
 
